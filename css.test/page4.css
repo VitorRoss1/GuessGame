@@ -1,0 +1,74 @@
+
+#caixa2{
+    border: 5px solid;
+    width: 200px;
+    height: 200px;
+    font-size: 150px;
+    text-align: center;
+    background: red;
+
+    /*
+    animation: minhaAnimacao;
+    animation-duration: 5s;
+    animation-iteration-count:2 ;
+    animation-play-state: running;
+    animation-delay: 1s;
+    animation-timing-function: ease-in;/*ease in acelera mas nao desacelera
+    ease out so desacelera ; ease faz os dois; linear:constante*/
+    
+}
+/*pseudo class*/
+#caixa2:hover{ /*active:enquanto aperta*/
+ animation: minhaAnimacao;
+ animation: 5s ease-out 0s infinite running minhaAnimacao;/*junta as funcoes*/
+}
+
+/*animations*/
+@keyframes minhaAnimacao{
+    from{margin-left: 0%;} to{margin-left: 100%;}
+    50%{transform: scale(0.5);}
+}
+@keyframes minhaAnimacao2{
+   /* Opcional: Defina o estado inicial (0%) para evitar "pulos" */
+    0% {/*momento da animacao*/
+        transform: rotate(0deg);
+        opacity: 1;
+    }
+
+    10% {
+        transform: rotateY(360deg); /* Giro rápido no eixo Y no começo */
+    }
+
+    20% {
+        background-color: #396eff; /* Fica roxo cedo */
+    }
+
+    /* O FINAL (100%): Juntei tudo aqui */
+    100% {
+        transform: rotateX(360deg); /* Gira no X */
+        opacity: 0;                 /* Fica transparente */
+        background-color: green;    /* Fica verde */
+}
+}
+
+#caixa:hover{ /*active:enquanto aperta*/
+ animation: minhaAnimacao2 2s infinite;
+}
+
+#caixa{
+    border: 5px solid;
+    width: 250px;
+    height: 250px;
+    font-size: 225px;
+    text-align: center;
+    background-color: skyblue;
+
+
+    transform:translate(50px,50px); /*mudar posicao xy*/
+    transform: rotateZ(180deg);
+    transform:scale(0.5);
+    transform: skew(30deg,0deg);/*inclinar*/
+    transform: matrix(1,0,0,1,0,0) /*junta as funcoes scalex 
+    skewy skewx scaleY translateX translateY*/
+
+}

@@ -3,6 +3,9 @@ num = randint(0,100)
 
 print("Guess the number!")
 print(" xx rules xx")
+print("if you guessed it in a margin of 10 numbers = 'warm' ")
+print("if didn't = 'cold' ")
+print("I'll tell you if you're getting closer or not :p")
 
 #list to store guesses
 guesses = []

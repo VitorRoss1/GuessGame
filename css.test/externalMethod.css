@@ -1,0 +1,67 @@
+
+
+body{
+  background-image: url(img-1034407-pulp-fiction.jpg);
+  background-repeat: no-repeat ;/*so it doesnt repeat whent the texts end  */
+  background-attachment: fixed; /* so it doenst end when the text ends and goes to the Page end */  
+  background-position: center;
+  background-size: cover; /*expands or shrink based on the size of the window*/
+  
+  border: 5px solid; /*fronteira entre margem e o elemento*/
+  margin: 24px; /*espaço entre a pagina e o elemento (no caso body)*/
+    } 
+
+ h1{
+   color: rgb(0, 0, 0);
+   box-shadow: 5px 5px 5px rgb(190, 9, 160);
+   
+   }
+ h1:hover{text-shadow: 0px 0px 5px yellow, 0px -5px 5px red;} /*quando passa o mouse*/
+ 
+ p{
+   color: white; 
+   background-color: rgb(204, 9, 214);
+  }
+
+#p1{color: rgb(240, 9, 9); background-color: rgb(237, 232, 232);
+   border-style:outset ;
+   border-width: 5px;
+   border-color: rgb(0, 0, 0);
+   border-radius: 10px;
+   padding: 5px; /* espaco entre letra e borda */
+   }
+#p2{
+background: linear-gradient(to right, green,black);
+background-repeat: no-repeat ;
+background-attachment: fixed;
+}
+
+#h2{
+    color: rgb(39, 31, 253);
+    border-top-style: dashed;
+    font-family: "Playfair Display";
+    font-style:italic;
+    font-weight: 500;
+    text-decoration:cyan dotted underline;
+    font-size: 50px;
+}
+#box1{
+border: 5px solid;
+width: 250px;
+height: 250px;
+font-size: 22px;
+background: yellow;
+padding: 20px;/*espaco INSIDE */
+margin-top: 25%;/*espaco OUTSIDE */
+}
+#box2{
+border: 5px solid;
+width: 250px;
+height: 250px;
+font-size: 22px;
+background: yellowgreen;
+margin-left: auto;
+margin-right: auto; /*centralizado*/
+}
+
+a:link {color:yellow;}
