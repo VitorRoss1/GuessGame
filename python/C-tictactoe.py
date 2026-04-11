@@ -55,7 +55,7 @@ def user_position_input():
 #3F------------------------------------------------------------------------
 def display_table(table):
     for item in table:
-        print(item)
+        print(item)  
 
 #4F------------------------------------------------------------------------
 xorball = 0
