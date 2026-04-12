@@ -10,16 +10,17 @@ ranks = ('Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten','Jack','
 values = {'Two':2, 'Three':3, 'Four':4, 'Five':5, 'Six':6,'Seven':7, 'Eight':8,'Nine':9,'Ten':10, 'Jack':11, 'Queen':12, 'King':13, 'Ace':14} #obs: uppercased first letter
 
 
-
 class Card:
     def __init__(self,suitP,rankP): #'P' as parameter
         self.suit = suitP
         self.rank = rankP
         self.value = values[rankP]
+
     def __str__(self): #str method defines print output for the class
         return self.rank + "of" + self.suit
     
-#create 52 cards hold them as a list of card objects,shuffle,pop dealed cards
+
+#"baralho" create 52 cards, hold them as a list of card objects,shuffle,pop dealed cards
 class Deck:
     def __init__(self):
         self.all_cards = []
@@ -35,9 +36,10 @@ class Deck:
     def deal_one(self):
         return self.all_cards.pop() #pop with no argument removes the last item, gotta shuffle it before
     
+
 #hold current list of cards, remove or add cards, add 1 or + cards to their list
 class Playaa:
-    #top-left bottom-right
+
     #play from the top pop(0) first card; add to the bottom append(default)
     #add multiple cards with the extend(merges lists,puts it at the bottom aswell); append would generate a nested list [1,[2,3]]
     def __init__(self,name):
@@ -57,3 +59,52 @@ class Playaa:
 
     def __str__(self):
         return f"{self.player} has {len(self.your_cards)} cards."
+    
+
+
+
+# Game Logic
+ 
+ #setup
+player1 = Playaa("sub")
+player2 = Playaa("zero")
+
+new_deck = Deck()
+new_deck.shuffle()
+
+for i in range(26):
+    player1.add_card_s(new_deck.deal_one())
+    player2.add_card_s(new_deck.deal_one())
+
+#game
+round_counter = 0
+gameOn = True
+while gameOn:
+
+    round_counter+=1
+    print(f"Round {round_counter}, FIGHT!")
+
+    if len(player1.your_cards)==0:
+        gameOn = False
+        print("player 2 wins")
+
+    if len(player2.your_cards)==0:
+        gameOn = False
+        print("player 1 wins")
+
+# new round cards
+playerOne_roundCards = []
+playerOne_roundCards.append(player1.remove_one()) #draws 1 card from the beggining 26 to the table
+playerTwo_roundCards = []
+playerTwo_roundCards.append(player2.remove_one())
+
+
+    war_mode = False
+    while war_mode:
+
+
+
+
+
+
+
