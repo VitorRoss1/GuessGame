@@ -1,5 +1,5 @@
-# war card game
-#
+# war card game simulation
+# 11/4/26
 #
 import random
 
@@ -39,7 +39,6 @@ class Deck:
 
 #hold current list of cards, remove or add cards, add 1 or + cards to their list
 class Playaa:
-
     #play from the top pop(0) first card; add to the bottom append(default)
     #add multiple cards with the extend(merges lists,puts it at the bottom aswell); append would generate a nested list [1,[2,3]]
     def __init__(self,name):
@@ -55,7 +54,7 @@ class Playaa:
             self.your_cards.extend(new_card_s)
         #adding 1 card
         else:
-            self.your_cards.append(new_card_s[-1]) #explicit
+            self.your_cards.append(new_card_s) #explicit new_card_s[-1]
 
     def __str__(self):
         return f"{self.player} has {len(self.your_cards)} cards."
@@ -69,6 +68,7 @@ class Playaa:
 player1 = Playaa("sub")
 player2 = Playaa("zero")
 
+
 new_deck = Deck()
 new_deck.shuffle()
 
@@ -76,7 +76,7 @@ for i in range(26):
     player1.add_card_s(new_deck.deal_one())
     player2.add_card_s(new_deck.deal_one())
 
-#game
+#check
 round_counter = 0
 gameOn = True
 while gameOn:
@@ -84,6 +84,7 @@ while gameOn:
     round_counter+=1
     print(f"Round {round_counter}, FIGHT!")
 
+#checks if still has cards to play
     if len(player1.your_cards)==0:
         gameOn = False
         print("player 2 wins")
@@ -92,15 +93,34 @@ while gameOn:
         gameOn = False
         print("player 1 wins")
 
-# new round cards
-playerOne_roundCards = []
-playerOne_roundCards.append(player1.remove_one()) #draws 1 card from the beggining 26 to the table
-playerTwo_roundCards = []
-playerTwo_roundCards.append(player2.remove_one())
+ #new round cards
+    playerOne_roundCards = []
+    playerOne_roundCards.append(player1.remove_one()) #draws 1 card from the beggining 26 to the table
+    playerTwo_roundCards = []
+    playerTwo_roundCards.append(player2.remove_one())
 
-
+  #draw 5 cards last one used for comparision over the war result,looses who has less than 5 cards
     war_mode = False
     while war_mode:
+        if playerOne_roundCards[-1].value > playerTwo_roundCards[-1].value: # -1 to not pick the first card(avoid repeting in case of war). last doesnt matter if there is only one(no war scenario)
+            war_mode = False
+            player1.add_card_s(playerTwo_roundCards) # add single or list of cards to the player1.yourcards
+            player1.add_card_s(playerOne_roundCards) #returning from battle
+        elif playerOne_roundCards[-1].value < playerTwo_roundCards[-1].value:
+            war_mode = False
+            player2.add_card_s(playerOne_roundCards)
+            player2.add_card_s(playerTwo_roundCards)
+        else: #WAR
+            print("WAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAR")
+            war_mode = True
+
+            if len(player1.your_cards) < 5:
+                print("Player One unable to play war! Game Over at War\n Player Two Wins!")
+                game_on = False     
+
+            elif len(player2.your_cards) < 5:
+                print("Player Two unable to play war! Game Over at War\n Player One Wins!")
+                game_on = False
 
 
 
