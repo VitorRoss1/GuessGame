@@ -18,7 +18,7 @@ class Card:
         self.value = values[rankP]
 
     def __str__(self): #str method defines print output for the class
-        return f"{self.rank} + of + {self.suit}"
+        return f"{self.rank} of {self.suit}"
     
 
 
@@ -92,21 +92,22 @@ while gameOn:
         gameOn = False
         print("player 1 wins")
         break
-
- #info displayed every round
-    print(f"|  {player1}  |  {player2}  |")
-    print(f"(Round {round_counter}) {player1.your_cards[0]} vs  {player2.your_cards[0]}, FIGHT!") 
-
+        
+ #printing number of cards(__str__ returning) BEFORE drawing    
+    print(f"(Round {round_counter}) |  {player1}  |  {player2}  |") 
+    
  #draw this round cards
     playerOne_roundCards = []
     playerOne_roundCards.append(player1.remove_one()) #draws 1 card from the starter 26, to the table (player1.your_cards.pop(0))
     playerTwo_roundCards = []
     playerTwo_roundCards.append(player2.remove_one())
 
+ #info displayed every round(part2)
+    print(f"{playerOne_roundCards[-1]} vs {playerTwo_roundCards[-1]} , FIGHT!")
 
-  #draw 5 cards, last one used for comparision over the war result,looses who has less than 5 cards
+    #draw 5 cards, last one used for comparision over the war result
     war_mode = True
-    while war_mode:
+    while war_mode:   
         if playerOne_roundCards[-1].value > playerTwo_roundCards[-1].value: #[-1] to not pick the first card(avoid repeting the same card in case of war). [-1] doesnt matter if there is only one(no war scenario)
             war_mode = False
             player1.add_card_s(playerTwo_roundCards) # add single or list of cards to the bottom of player1.your_cards
@@ -118,22 +119,23 @@ while gameOn:
             player2.add_card_s(playerTwo_roundCards)
 
         else: #WAR
-            print("WAR")
-            
             #check (able to play war) 
             if len(player1.your_cards) < 5:
-                print("Player One unable to play war! Game Over at War\n Player Two Wins!")
-                war_mode = False  
+                print("Player One unable to play war! Game Over at War\nPlayer Two Wins!")
+                gameOn = False
                 break   
 
             elif len(player2.your_cards) < 5:
-                print("Player Two unable to play war! Game Over at War\n Player One Wins!")
-                war_mode = False
+                print("Player Two unable to play war! Game Over at War\nPlayer One Wins!")
+                gameOn = False
                 break
 
             for i in range(5):  #each player puts down 5 more cards
                 playerOne_roundCards.append(player1.remove_one())
                 playerTwo_roundCards.append(player2.remove_one())
+
+            print(f"WAR\n(WAR ROUND) {playerOne_roundCards[-1]} vs {playerTwo_roundCards[-1]}")
+
 
 
 
