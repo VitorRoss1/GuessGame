@@ -112,11 +112,13 @@ while gameOn:
             war_mode = False
             player1.add_card_s(playerTwo_roundCards) # add single or list of cards to the bottom of player1.your_cards
             player1.add_card_s(playerOne_roundCards) #returning from battle
+            random.shuffle(player1.your_cards) #shuffling won cards!
 
         elif playerOne_roundCards[-1].value < playerTwo_roundCards[-1].value:
             war_mode = False
             player2.add_card_s(playerOne_roundCards)
             player2.add_card_s(playerTwo_roundCards)
+            random.shuffle(player2.your_cards)
 
         else: #WAR
             #check (able to play war) 

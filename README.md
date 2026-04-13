@@ -49,6 +49,8 @@ A simulation of the classic card game **War**, played automatically between two 
 - War mechanic: tie triggers a 5-card war sequence
 - Edge case handling: player eliminated if they have fewer than 5 cards during war
 - Win condition detection for both players
+- Shuffle round winner cards.
+- Additional Information on The Statistics of War (card game) https://www.wimpyprogrammer.com/the-statistics-of-war-the-card-game
 
 #### Concepts Used
 
